@@ -1,46 +1,42 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-var USER_DATA = {
+const USER_DATA = {
   name: "Chipper Dipper",
   username: "chipper",
   image: "https://i.ytimg.com/vi/XvUqB-mgLpA/hqdefault.jpg"
 }
 
-var ProfilePic = React.createClass({
-   render: function() {
-    return <img src={this.props.imageUrl} />
-   }
- });
+const ProfilePic = ({
+  imageUrl
+}) => (
+  <img src={imageUrl} />
+)
 
-var ProfileLink = React.createClass({
-  render: function () {
-    return (
-      <div>
-        <a href={'https://www.github.com/' +  this.props.username}>
-          {this.props.username}
-        </a>
-      </div>
-    );
-  }
-});
+const ProfileLink = ({
+  username
+}) => (
+  <div>
+    <a href={'https://www.github.com/' + username}>
+      {username}
+    </a>
+  </div>
+)
 
-var ProfileName = React.createClass({
-  render: function (){
-    return <div>{this.props.name}</div>
-  }
-})
+const ProfileName = ({
+  name
+}) => (
+  <div>{name}</div>
+)
 
-var Avatar = React.createClass({
-  render: function (){
-    return (
-      <div>
-        <ProfilePic imageUrl={this.props.user.image} />
-        <ProfileName name={this.props.user.name} />
-        <ProfileLink username={this.props.user.username} />
-      </div>
-    )
-  }
-});
+const Avatar = ({
+  user
+}) => (
+  <div>
+    <ProfilePic imageUrl={user.image} />
+    <ProfileName name={user.name} />
+    <ProfileLink username={user.username} />
+  </div>
+)
 
-ReactDOM.render(<Avatar user={USER_DATA} />, document.getElementById('app'));
+ReactDOM.render(<Avatar user={USER_DATA} />, document.getElementById('app'))
